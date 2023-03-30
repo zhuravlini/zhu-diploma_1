@@ -1,17 +1,13 @@
 package ru.netology.page;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import lombok.val;
 import org.junit.BeforeClass;
 import ru.netology.data.DataHelper;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
-import static ru.netology.data.DataHelper.getFormWithAllEmptyFields;
 
 
 public class PaymentPage {
@@ -42,15 +38,6 @@ public class PaymentPage {
         buttonContinue.click();
     }
 
-//    public void emptyForm() {
-//        buttonContinue.click();
-//        fieldNumberCard.shouldHave(Condition.text("Неверный формат"));
-//        fieldMonth.shouldHave(Condition.text("Неверный формат"));
-//        fieldYear.shouldBe(Condition.text("Неверный формат"));
-//        fieldHolder.shouldBe(Condition.text("Поле обязательно для заполнения"));
-//        fieldCvc.shouldBe(Condition.text("Неверный формат"));
-//
-//    }
     public void waitSuccessResult() {
 
         successNotification.shouldBe(visible);

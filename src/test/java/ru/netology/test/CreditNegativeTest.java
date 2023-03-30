@@ -31,23 +31,6 @@ public class CreditNegativeTest extends TestBaseUI {
         paymentPage.waitIncorrectFormat();
     }
 
-//    public void testWithEmptyAllFieldsPayOnCredit() {
-//        val cardData = getFormWithAllEmptyFields();
-//        paymentPage.completedPaymentForm(cardData);
-//        final ElementsCollection emptyField = $$(".input__sub");
-//        final SelenideElement fieldNumberCard = emptyField.get(1);
-//        final SelenideElement fieldMonth = emptyField.get(2);
-//        final SelenideElement fieldYear = emptyField.get(3);
-//        final SelenideElement fieldHolder = emptyField.get(4);
-//        final SelenideElement fieldCvc = emptyField.get(5);
-//        fieldNumberCard.shouldHave(Condition.text("Неверный формат"));
-//        fieldMonth.shouldHave(Condition.text("Неверный формат"));
-//        fieldYear.shouldBe(Condition.text("Неверный формат"));
-//        fieldHolder.shouldBe(Condition.text("Поле обязательно для заполнения"));
-//        fieldCvc.shouldBe(Condition.text("Неверный формат"));
-//
-//    }
-
     @Test
     public void testWithDeficientNumbersCardPayOnCredit() {
         var cardData = getFormWithInValidNumberCardWithDeficientNumbers();
