@@ -5,10 +5,10 @@
 4. В терминале IDEA набрать команду docker-compose up
 5. В терминале IDEA набрать команду java -jar ./artifacts/aqa-shop.jar
 6. Запустить тесты:
- - gradlew clean test -D db.url=jdbc:mysql://localhost:3306/app - для БД MysSQL
+ - gradlew clean test -Ddb.url=jdbc:mysql://localhost:3306/app - для БД MysSQL
  
 либо
- - gradlew clean test -D db.url=jdbc:postgresql://localhost:5432/app - для БД Postgresql
+ - gradlew clean test -Ddb.url=jdbc:postgresql://localhost:5432/app - для БД Postgresql
 7. Открыть отчет о прохождении тестов командой gradlew allureServe
 
 
