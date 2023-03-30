@@ -23,20 +23,20 @@ public class PaymentPositiveTest extends TestBaseUI {
 
     @Test
     public void successResultIfApprovedCardsBuyForm() {
-        val cardData = getCorrectlyFormForApprovedCardForm();
+        var cardData = getCorrectlyFormForApprovedCardForm();
         paymentPage.completedPaymentForm(cardData);
         paymentPage.waitSuccessResult();
 
-        val statusExpected = getValidCardStatus();
-        val statusActual = getCardStatusForPayment();
+        var statusExpected = getValidCardStatus();
+        var statusActual = getCardStatusForPayment();
         assertEquals(statusExpected, statusActual);
 
-        val expectedAmount = "4500000";
-        val actualAmount = getAmountPayment();
+        var expectedAmount = "4500000";
+        var actualAmount = getAmountPayment();
         assertEquals(expectedAmount, actualAmount);
 
-        val expectedId = getTransactionId();
-        val actualId = getPaymentId();
+        var expectedId = getTransactionId();
+        var actualId = getPaymentId();
         assertNotNull(actualId);
         assertNotNull(expectedId);
         assertEquals(expectedId, actualId);
@@ -44,16 +44,16 @@ public class PaymentPositiveTest extends TestBaseUI {
 
     @Test
     public void failResultIfDeclinedCardBuyForm() {
-        val cardData = getCorrectlyFormForDeclinedCardForm();
+        var cardData = getCorrectlyFormForDeclinedCardForm();
         paymentPage.completedPaymentForm(cardData);
         paymentPage.waitError();
 
-        val statusExpected = getInvalidCardStatus();
-        val statusActual = getCardStatusForPayment();
+        var statusExpected = getInvalidCardStatus();
+        var statusActual = getCardStatusForPayment();
         assertEquals(statusExpected, statusActual);
 
-        val expectedId = getBankId();
-        val actualId = getPaymentId();
+        var expectedId = getBankId();
+        var actualId = getPaymentId();
         assertNotNull(expectedId);
         assertNotNull(actualId);
         assertEquals(expectedId, actualId);

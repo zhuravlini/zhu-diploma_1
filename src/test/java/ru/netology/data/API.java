@@ -10,8 +10,8 @@ import static io.restassured.RestAssured.given;
 public class API {
 
     public static RequestSpecification requestSpecification = new RequestSpecBuilder()
-            .setBaseUri("http://localhost")
-            .setPort(8080)
+            .setBaseUri(System.getProperty("sut.url"))
+            //.setPort(8080)
             .setAccept(ContentType.JSON)
             .setContentType(ContentType.JSON)
             .log(LogDetail.ALL)

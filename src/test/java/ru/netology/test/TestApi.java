@@ -13,29 +13,29 @@ public class TestApi {
 
     @Test
     void approvedCardBuyForm() {
-        val validApprovedCard = getCorrectlyFormForApprovedCardForm();
-        val status = buyForm(validApprovedCard);
+        var validApprovedCard = getCorrectlyFormForApprovedCardForm();
+        var status = buyForm(validApprovedCard);
         assertTrue(status.contains("APPROVED"));
     }
 
     @Test
     void declinedCardBuyForm() {
-        val validDeclinedCard = getCorrectlyFormForDeclinedCardForm();
-        val status = buyForm(validDeclinedCard);
+        var validDeclinedCard = getCorrectlyFormForDeclinedCardForm();
+        var status = buyForm(validDeclinedCard);
         assertTrue(status.contains("DECLINED"));
     }
 
     @Test
     void approvedCardCreditForm() {
-        val validApprovedCard = getCorrectlyFormForApprovedCardForm();
-        val status = creditForm(validApprovedCard);
+        var validApprovedCard = getCorrectlyFormForApprovedCardForm();
+        var status = creditForm(validApprovedCard);
         assertTrue(status.contains("APPROVED"));
     }
 
     @Test
     void declinedCardCreditForm() {
-        val validDeclinedCard = getCorrectlyFormForDeclinedCardForm();
-        val status = creditForm(validDeclinedCard);
+        var validDeclinedCard = getCorrectlyFormForDeclinedCardForm();
+        var status = creditForm(validDeclinedCard);
         assertTrue(status.contains("DECLINED"));
     }
 }

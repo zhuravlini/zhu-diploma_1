@@ -25,38 +25,38 @@ public class CreditPositiveTest extends TestBaseUI {
     }
 
     @Test
-    public void successResultIfApprovedCardsBuyFormOnCredit() throws SQLException {
-        val cardData = getCorrectlyFormForApprovedCardForm();
+    public void successResultIfApprovedCardsBuyFormOnCredit() {
+        var cardData = getCorrectlyFormForApprovedCardForm();
         paymentPage.completedPaymentForm(cardData);
         paymentPage.waitSuccessResult();
 
-        val statusExpected = getValidCardStatus();
-        val statusActual = getCardStatusForCreditRequest();
+        var statusExpected = getValidCardStatus();
+        var statusActual = getCardStatusForCreditRequest();
         assertEquals(statusExpected, statusActual);
 
-        val expectedAmount = "4500000";
-        val actualAmount = getAmountPayment();
+        var expectedAmount = "4500000";
+        var actualAmount = getAmountPayment();
         assertEquals(expectedAmount, actualAmount);
 
-        val expectedId = getTransactionId();
-        val actualId = getPaymentId();
+        var expectedId = getTransactionId();
+        var actualId = getPaymentId();
         assertNotNull(actualId);
         assertNotNull(expectedId);
         assertEquals(expectedId, actualId);
     }
 
     @Test
-    public void failResultIfDeclinedCardBuyFormOnCredit() throws SQLException {
-        val cardData = getCorrectlyFormForDeclinedCardForm();
+    public void failResultIfDeclinedCardBuyFormOnCredit() {
+        var cardData = getCorrectlyFormForDeclinedCardForm();
         paymentPage.completedPaymentForm(cardData);
         paymentPage.waitError();
 
-        val statusExpected = getInvalidCardStatus();
-        val statusActual = getCardStatusForCreditRequest();
+        var statusExpected = getInvalidCardStatus();
+        var statusActual = getCardStatusForCreditRequest();
         assertEquals(statusExpected, statusActual);
 
-        val expectedId = getBankId();
-        val actualId = getPaymentId();
+        var expectedId = getBankId();
+        var actualId = getPaymentId();
         assertNotNull(expectedId);
         assertNotNull(actualId);
         assertEquals(expectedId, actualId);

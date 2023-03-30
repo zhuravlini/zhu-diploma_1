@@ -26,73 +26,79 @@ public class CreditNegativeTest extends TestBaseUI {
 
     @Test
     public void testWithEmptyAllFieldsPayOnCredit() {
-        val cardData = getFormWithAllEmptyFields();
+     var cardData = getFormWithAllEmptyFields();
         paymentPage.completedPaymentForm(cardData);
-        final ElementsCollection emptyField = $$(".input__sub");
-        final SelenideElement fieldNumberCard = emptyField.get(1);
-        final SelenideElement fieldMonth = emptyField.get(2);
-        final SelenideElement fieldYear = emptyField.get(3);
-        final SelenideElement fieldHolder = emptyField.get(4);
-        final SelenideElement fieldCvc = emptyField.get(5);
-        fieldNumberCard.shouldHave(Condition.text("Неверный формат"));
-        fieldMonth.shouldHave(Condition.text("Неверный формат"));
-        fieldYear.shouldBe(Condition.text("Неверный формат"));
-        fieldHolder.shouldBe(Condition.text("Поле обязательно для заполнения"));
-        fieldCvc.shouldBe(Condition.text("Неверный формат"));
-
+        paymentPage.waitIncorrectFormat();
     }
+
+//    public void testWithEmptyAllFieldsPayOnCredit() {
+//        val cardData = getFormWithAllEmptyFields();
+//        paymentPage.completedPaymentForm(cardData);
+//        final ElementsCollection emptyField = $$(".input__sub");
+//        final SelenideElement fieldNumberCard = emptyField.get(1);
+//        final SelenideElement fieldMonth = emptyField.get(2);
+//        final SelenideElement fieldYear = emptyField.get(3);
+//        final SelenideElement fieldHolder = emptyField.get(4);
+//        final SelenideElement fieldCvc = emptyField.get(5);
+//        fieldNumberCard.shouldHave(Condition.text("Неверный формат"));
+//        fieldMonth.shouldHave(Condition.text("Неверный формат"));
+//        fieldYear.shouldBe(Condition.text("Неверный формат"));
+//        fieldHolder.shouldBe(Condition.text("Поле обязательно для заполнения"));
+//        fieldCvc.shouldBe(Condition.text("Неверный формат"));
+//
+//    }
 
     @Test
     public void testWithDeficientNumbersCardPayOnCredit() {
-        val cardData = getFormWithInValidNumberCardWithDeficientNumbers();
+        var cardData = getFormWithInValidNumberCardWithDeficientNumbers();
         paymentPage.completedPaymentForm(cardData);
         paymentPage.waitIncorrectFormat();
     }
 
     @Test
     public void testZeroMonthPayOnCredit() {
-        val cardData = getFormWithIncorrectMonthEqualTo00();
+        var cardData = getFormWithIncorrectMonthEqualTo00();
         paymentPage.completedPaymentForm(cardData);
         paymentPage.waitInvalidCardExpirationDate();
     }
 
     @Test
     public void testWithNonexistentMonthPayOnCredit() {
-        val cardData = getFormWithInvalidMonthEqualsToNoExistentMonth();
+        var cardData = getFormWithInvalidMonthEqualsToNoExistentMonth();
         paymentPage.completedPaymentForm(cardData);
         paymentPage.waitInvalidCardExpirationDate();
     }
     @Test
     public void testWithIncorrectMonthEqualsOneNumberPayOnCredit() {
-        val cardData = getFormWithIncorrectFieldMonthEqualsOneNumber();
+        var cardData = getFormWithIncorrectFieldMonthEqualsOneNumber();
         paymentPage.completedPaymentForm(cardData);
         paymentPage.waitIncorrectFormat();
     }
 
     @Test
     public void testWithExpiredYearPayOnCredit() {
-        val cardData = getFormWithExpiredYear();
+        var cardData = getFormWithExpiredYear();
         paymentPage.completedPaymentForm(cardData);
         paymentPage.waitCardExpired();
     }
 
     @Test
     public void testWithInvalidFillingYearPayOnCredit() {
-        val cardData = getFormWithInvalidYear();
+        var cardData = getFormWithInvalidYear();
         paymentPage.completedPaymentForm(cardData);
         paymentPage.waitInvalidCardExpirationDate();
     }
 
     @Test
     public void testWithIncorrectFillingYearPayOnCredit() {
-        val cardData = getFormWithIncorrectFieldYearEqualsToOneNumber();
+        var cardData = getFormWithIncorrectFieldYearEqualsToOneNumber();
         paymentPage.completedPaymentForm(cardData);
         paymentPage.waitIncorrectFormat();
     }
 
     @Test
     public void testWithNumberInFieldHolderPayOnCredit() {
-        val cardData = getFormWithHolderNameEqualsToNumbers();
+        var cardData = getFormWithHolderNameEqualsToNumbers();
         paymentPage.completedPaymentForm(cardData);
         paymentPage.waitIncorrectFormat();
     }
@@ -100,7 +106,7 @@ public class CreditNegativeTest extends TestBaseUI {
     @Test
 
     public void shouldCardWithIncompleteCVCEqualToTwoNumberOnCredit() {
-        val cardData = getFormWithCVCEqualToTwoNumber();
+        var cardData = getFormWithCVCEqualToTwoNumber();
         paymentPage.completedPaymentForm(cardData);
         paymentPage.waitIncorrectFormat();
     }

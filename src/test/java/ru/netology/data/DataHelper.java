@@ -4,6 +4,8 @@ import com.github.javafaker.Faker;
 import lombok.NoArgsConstructor;
 import lombok.Value;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Random;
 
@@ -119,10 +121,13 @@ public class DataHelper {
     }
 
     //поле год
+    public static String getCurrentYear() {
+        return LocalDate.now().format(DateTimeFormatter.ofPattern("yy"));
+    }
+
     public static String getValidYear() {
 
-        return String.valueOf(faker.number().numberBetween(23, 28));
-
+        return getCurrentYear() + 1;
     }
 
     public static String getInvalidYearEqualsToExpiredYear() {
