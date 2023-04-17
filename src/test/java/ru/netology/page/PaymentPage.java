@@ -1,10 +1,9 @@
 package ru.netology.page;
-
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
-import org.junit.BeforeClass;
 import ru.netology.data.DataHelper;
+import java.time.Duration;
 
+import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
@@ -24,11 +23,6 @@ public class PaymentPage {
     private final SelenideElement cardExpired = $(withText("Истёк срок действия карты"));
 
 
-    @BeforeClass
-    static public void setupTimeout() {
-        Configuration.timeout = 15000;
-    }
-
     public void completedPaymentForm(DataHelper.CardData cardData) {
         fieldNumberCard.setValue(cardData.getNumber());
         fieldMonth.setValue(cardData.getMonth());
@@ -40,27 +34,27 @@ public class PaymentPage {
 
     public void waitSuccessResult() {
 
-        successNotification.shouldBe(visible);
+        successNotification.should(visible, Duration.ofSeconds(25));
     }
 
     public void waitError() {
 
-        errorNotification.shouldBe(visible);
+        errorNotification.shouldBe(visible, Duration.ofSeconds(25));
     }
 
     public void waitInvalidCardExpirationDate() {
 
-        invalidCardExpirationDate.shouldBe(visible);
+        invalidCardExpirationDate.shouldBe(visible, Duration.ofSeconds(8));
     }
 
     public void waitIncorrectFormat() {
 
-        incorrectFormat.shouldBe(visible);
+        incorrectFormat.shouldBe(visible, Duration.ofSeconds(8));
     }
 
     public void waitCardExpired() {
 
-        cardExpired.shouldBe(visible);
+        cardExpired.shouldBe(visible, Duration.ofSeconds(8));
     }
 
 }

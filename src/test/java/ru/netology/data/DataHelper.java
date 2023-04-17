@@ -121,14 +121,10 @@ public class DataHelper {
     }
 
     //поле год
-    public static String getCurrentYear() {
-        return LocalDate.now().format(DateTimeFormatter.ofPattern("yy"));
-    }
-
     public static String getValidYear() {
-
-        return getCurrentYear() + 1;
+        return LocalDate.now().plusYears(1).format(DateTimeFormatter.ofPattern("yy"));
     }
+
 
     public static String getInvalidYearEqualsToExpiredYear() {
 
