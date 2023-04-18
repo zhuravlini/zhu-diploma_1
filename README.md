@@ -7,20 +7,19 @@
 5. В соседней вкладке запустить само приложение командой
 - для БД Postgresql
 
-        java -Dserver.port=8090 -Dspring.datasource.url=jdbc:postgresql://localhost:5432/app -jar artifacts/aqa-shop.jar
-
+        java "-Dspring.datasource.url=jdbc:postgresql://localhost:5432/app" -jar artifacts/aqa-shop.jar
  - для БД MysSQL
  
-        java -Dserver.port=8090 -Dspring.datasource.url=jdbc:mysql://localhost:3306/app -jar artifacts/aqa-shop.jar
-       
+         java "-Dspring.datasource.url=jdbc:mysql://localhost:3306/app" -jar artifacts/aqa-shop.jar
+
 6. Запустить тесты командой
 - для БД Postgresql
 
-        gradlew clean test -Ddb.url=jdbc:mysql://localhost:3306/app
+       ./gradlew clean test "-Ddb.url=jdbc:postgresql://localhost:5432/app"
 
  - для БД MysSQL
  
-        gradlew clean test -Ddb.url=jdbc:postgresql://localhost:5432/app
+        ./gradlew clean test "-Ddb.url=jdbc:mysql://localhost:3306/app"
       
       
 7. Открыть отчет о прохождении тестов командой gradlew allureServe
